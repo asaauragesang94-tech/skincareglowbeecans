@@ -1,0 +1,813 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glow Beauty | Skincare & Self Care</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --pink: #ff70a6;
+  --purple: #a78bfa;
+  --cream: #fff8f5;
+  --dark: #392b46;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--dark);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 7%;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 3px 20px #d9b8ca35;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: var(--pink);
+}
+
+.logo span { color: var(--purple); }
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+nav a:hover { color: var(--pink); }
+
+.cart-button, .primary {
+  border: none;
+  background: linear-gradient(120deg, #ff70a6, #b28dff);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: .25s;
+}
+
+.cart-button:hover, .primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #ff70a650;
+}
+
+.hero {
+  min-height: 520px;
+  padding: 65px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  background: linear-gradient(120deg, #ffe1ec, #f0e6ff, #fff1e2);
+  overflow: hidden;
+}
+
+.hero-text { max-width: 540px; }
+
+.tag {
+  display: inline-block;
+  background: white;
+  color: #ec5994;
+  border-radius: 30px;
+  padding: 9px 16px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero h1 span { color: #f45d9b; }
+
+.hero p {
+  color: #75677e;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.hero-image {
+  width: 43%;
+  max-width: 450px;
+  min-width: 260px;
+  border-radius: 48% 48% 25px 25px;
+  box-shadow: 15px 20px 0 #ffffff65;
+  object-fit: cover;
+  height: 370px;
+}
+
+section { padding: 70px 7%; }
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.section-title p { color: #88798f; }
+
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.category {
+  padding: 10px 20px;
+  border: 1px solid #f4c7db;
+  border-radius: 25px;
+  background: white;
+  color: #775d7c;
+  cursor: pointer;
+}
+
+.category.active, .category:hover {
+  color: white;
+  background: var(--pink);
+  border-color: var(--pink);
+}
+
+.search-box {
+  display: block;
+  width: min(100%, 450px);
+  margin: 0 auto 35px;
+  padding: 14px 20px;
+  border: 1px solid #edcfe0;
+  border-radius: 30px;
+  outline: none;
+  background: white;
+}
+
+.search-box:focus { border-color: var(--pink); }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.product {
+  background: white;
+  border-radius: 22px;
+  padding: 12px;
+  box-shadow: 0 8px 30px #b18ba51a;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.product:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px #b18ba530;
+}
+
+.product img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 16px;
+  background: #fce8f1;
+}
+
+.product-info { padding: 14px 5px 7px; }
+
+.product .category-label {
+  color: #e96eaa;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product h3 { font-size: 16px; margin: 7px 0; }
+
+.product p {
+  color: #8b7c91;
+  font-size: 12px;
+  min-height: 38px;
+}
+
+.price {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 12px 0;
+  color: #e85a97;
+}
+
+.add-button {
+  width: 100%;
+  padding: 11px;
+  background: #fff0f6;
+  color: #e85a97;
+  border: none;
+  border-radius: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background: var(--pink);
+  color: white;
+}
+
+.empty {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 40px;
+  color: #8b7c91;
+}
+
+.benefits {
+  background: linear-gradient(130deg, #f5eaff, #ffe5ef);
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.benefit {
+  background: #ffffffc9;
+  text-align: center;
+  border-radius: 22px;
+  padding: 30px 20px;
+}
+
+.benefit .emoji { font-size: 42px; }
+
+.benefit h3 { margin: 12px 0; }
+
+.benefit p {
+  color: #807187;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.routine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.routine {
+  border-radius: 22px;
+  padding: 28px;
+  background: white;
+  border: 1px solid #f6d9e6;
+}
+
+.routine h3 { margin-bottom: 12px; }
+
+.routine ol {
+  padding-left: 20px;
+  color: #796c81;
+  line-height: 2;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 20px;
+  background: #392b46;
+  color: white;
+}
+
+footer p {
+  color: #d6c5df;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Keranjang belanja */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #21132980;
+  z-index: 20;
+  display: none;
+}
+
+.overlay.show { display: block; }
+
+.cart-panel {
+  position: fixed;
+  right: -430px;
+  top: 0;
+  width: min(400px, 100%);
+  height: 100%;
+  background: white;
+  z-index: 21;
+  padding: 25px;
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-panel.show { right: 0; }
+
+.cart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close {
+  border: none;
+  background: #fff0f6;
+  padding: 8px 13px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.cart-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #f4e5ee;
+}
+
+.cart-item img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.cart-item-info { flex: 1; }
+
+.cart-item-info h4 { font-size: 13px; }
+
+.cart-item-info p {
+  font-size: 12px;
+  color: #e85a97;
+  margin-top: 5px;
+}
+
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.qty button {
+  border: none;
+  background: #ffeaf3;
+  border-radius: 6px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.cart-bottom {
+  padding-top: 20px;
+  border-top: 1px solid #f1dce8;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.checkout {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(120deg, #ff70a6, #b28dff);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translate(-50%, 100px);
+  background: #392b46;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 30px;
+  z-index: 30;
+  transition: .3s;
+  font-size: 13px;
+}
+
+.toast.show { transform: translate(-50%, 0); }
+
+@media(max-width: 900px) {
+  .products { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 50px 6%; }
+  .hero-image { height: 300px; }
+  nav { gap: 12px; }
+}
+
+@media(max-width: 600px) {
+  header { padding: 14px 5%; flex-wrap: wrap; gap: 12px; }
+  nav { width: 100%; justify-content: center; gap: 15px; }
+  nav a { font-size: 12px; }
+  .cart-button { padding: 9px 13px; font-size: 12px; }
+  .hero { flex-direction: column; text-align: center; }
+  .hero-image { width: 100%; max-width: 330px; }
+  section { padding: 50px 5%; }
+  .products { gap: 12px; }
+  .product img { height: 155px; }
+  .product h3 { font-size: 14px; }
+  .product .price { font-size: 14px; }
+  .benefit-grid, .routine-grid { grid-template-columns: 1fr; }
+  .section-title h2 { font-size: 26px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Glow<span>Beauty.</span> ✨</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#products">Produk</a>
+    <a href="#tips">Tips Skincare</a>
+    <button class="cart-button" onclick="openCart()">
+      🛍️ Keranjang (<span id="cart-count">0</span>)
+    </button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="tag">🌸 YOUR DAILY SELF-CARE</div>
+    <h1>Glow Naturally,<br><span>Shine Beautifully!</span></h1>
+    <p>
+      Temukan produk skincare favoritmu dan mulai perjalanan
+      merawat kulit dengan cara yang menyenangkan.
+      Karena setiap kulit layak mendapatkan perhatian.
+    </p>
+    <a href="#products">
+      <button class="primary">Jelajahi Produk ✨</button>
+    </a>
+  </div>
+  <img class="hero-image"
+    src="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=900&q=85"
+    alt="Produk perawatan kulit"
+    onerror="this.style.display='none'">
+</section>
+
+<section id="products">
+  <div class="section-title">
+    <h2>Our Beauty Collection 💗</h2>
+    <p>Temukan produk favorit untuk rutinitas skincare-mu.</p>
+  </div>
+
+  <input class="search-box" id="search"
+    placeholder="🔍 Cari cleanser, serum, sunscreen..."
+    oninput="renderProducts()">
+
+  <div class="categories">
+    <button class="category active" onclick="setCategory('Semua',this)">Semua</button>
+    <button class="category" onclick="setCategory('Cleanser',this)">Cleanser</button>
+    <button class="category" onclick="setCategory('Toner',this)">Toner</button>
+    <button class="category" onclick="setCategory('Serum',this)">Serum</button>
+    <button class="category" onclick="setCategory('Moisturizer',this)">Moisturizer</button>
+    <button class="category" onclick="setCategory('Sunscreen',this)">Sunscreen</button>
+  </div>
+
+  <div class="products" id="product-list"></div>
+</section>
+
+<section class="benefits">
+  <div class="section-title">
+    <h2>Why Glow Beauty? 🌷</h2>
+    <p>Perawatan kulit yang terasa lebih menyenangkan.</p>
+  </div>
+
+  <div class="benefit-grid">
+    <div class="benefit">
+      <div class="emoji">🌿</div>
+      <h3>Skin First</h3>
+      <p>Pilih produk berdasarkan kebutuhan dan kenyamanan kulitmu.</p>
+    </div>
+    <div class="benefit">
+      <div class="emoji">💖</div>
+      <h3>Self Love</h3>
+      <p>Rutinitas sederhana untuk merawat diri dan merasa nyaman.</p>
+    </div>
+    <div class="benefit">
+      <div class="emoji">✨</div>
+      <h3>Easy Routine</h3>
+      <p>Mulai dari langkah dasar tanpa perlu terlalu banyak produk.</p>
+    </div>
+  </div>
+</section>
+
+<section id="tips">
+  <div class="section-title">
+    <h2>Your Skincare Routine 🧴</h2>
+    <p>Rutinitas dasar yang bisa kamu sesuaikan dengan kebutuhan kulit.</p>
+  </div>
+
+  <div class="routine-grid">
+    <div class="routine">
+      <h3>☀️ Morning Routine</h3>
+      <ol>
+        <li>Cleanser yang lembut</li>
+        <li>Moisturizer</li>
+        <li>Sunscreen SPF 30 atau lebih</li>
+      </ol>
+    </div>
+    <div class="routine">
+      <h3>🌙 Night Routine</h3>
+      <ol>
+        <li>Bersihkan wajah</li>
+        <li>Serum sesuai kebutuhan</li>
+        <li>Moisturizer</li>
+      </ol>
+    </div>
+    <div class="routine">
+      <h3>💡 Glow Tips</h3>
+      <ol>
+        <li>Kenali kebutuhan kulitmu</li>
+        <li>Coba produk baru satu per satu</li>
+        <li>Gunakan sunscreen setiap pagi</li>
+      </ol>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="logo">Glow<span>Beauty.</span> ✨</div>
+  <p>Love your skin, love yourself. 💕</p>
+  <p>© 2026 Glow Beauty. Website demo untuk belajar.</p>
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<aside class="cart-panel" id="cart-panel">
+  <div class="cart-head">
+    <h2>🛍️ Keranjangmu</h2>
+    <button class="close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-bottom">
+    <div class="total-row">
+      <span>Total Belanja</span>
+      <span id="cart-total">Rp0</span>
+    </div>
+    <button class="checkout" onclick="checkout()">Lanjutkan Pesanan 💗</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const products = [
+  {
+    id: 1, name: "Gentle Facial Cleanser",
+    category: "Cleanser", price: 45000,
+    desc: "Pembersih lembut untuk penggunaan sehari-hari.",
+    image: "photo-1556229010-6c3f2c9ca5f8"
+  },
+  {
+    id: 2, name: "Hydrating Face Wash",
+    category: "Cleanser", price: 52000,
+    desc: "Membantu membersihkan kulit dengan nyaman.",
+    image: "photo-1608248543803-ba4f8c70ae0b"
+  },
+  {
+    id: 3, name: "Hydrating Toner",
+    category: "Toner", price: 65000,
+    desc: "Langkah hidrasi setelah membersihkan wajah.",
+    image: "photo-1601049541289-9b1b7bbbfe19"
+  },
+  {
+    id: 4, name: "Brightening Serum",
+    category: "Serum", price: 89000,
+    desc: "Serum untuk melengkapi rutinitas perawatan kulit.",
+    image: "photo-1620916566398-39f1143ab7be"
+  },
+  {
+    id: 5, name: "Hydra Glow Serum",
+    category: "Serum", price: 95000,
+    desc: "Mendukung kelembapan kulit sehari-hari.",
+    image: "photo-1611930022073-b7a4ba5fcccd"
+  },
+  {
+    id: 6, name: "Daily Moisturizer",
+    category: "Moisturizer", price: 72000,
+    desc: "Membantu menjaga kelembapan kulit.",
+    image: "photo-1556228720-195a672e8a03"
+  },
+  {
+    id: 7, name: "Soothing Cream",
+    category: "Moisturizer", price: 78000,
+    desc: "Krim pelembap untuk perawatan harian.",
+    image: "photo-1608248543803-ba4f8c70ae0b"
+  },
+  {
+    id: 8, name: "Daily Sunscreen SPF 50",
+    category: "Sunscreen", price: 68000,
+    desc: "Perlindungan UV untuk rutinitas pagi.",
+    image: "photo-1556229010-6c3f2c9ca5f8"
+  }
+];
+
+let category = "Semua";
+let cart = [];
+
+const rupiah = value =>
+  new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0
+  }).format(value);
+
+function imageUrl(id) {
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=500&q=80`;
+}
+
+function renderProducts() {
+  const keyword = document.getElementById("search").value.toLowerCase();
+
+  const filtered = products.filter(p =>
+    (category === "Semua" || p.category === category) &&
+    (p.name.toLowerCase().includes(keyword) ||
+     p.category.toLowerCase().includes(keyword) ||
+     p.desc.toLowerCase().includes(keyword))
+  );
+
+  const list = document.getElementById("product-list");
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty">Produk tidak ditemukan 🥹</div>';
+    return;
+  }
+
+  list.innerHTML = filtered.map(p => `
+    <article class="product">
+      <img src="${imageUrl(p.image)}"
+        alt="${p.name}"
+        loading="lazy"
+        onerror="this.onerror=null;this.src='https://placehold.co/500x400/ffe1ec/8e5076?text=Glow+Beauty'">
+      <div class="product-info">
+        <span class="category-label">${p.category}</span>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="price">${rupiah(p.price)}</div>
+        <button class="add-button" onclick="addToCart(${p.id})">
+          + Tambah ke Keranjang
+        </button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function setCategory(value, button) {
+  category = value;
+  document.querySelectorAll(".category").forEach(btn =>
+    btn.classList.remove("active")
+  );
+  button.classList.add("active");
+  renderProducts();
+}
+
+function addToCart(id) {
+  const item = cart.find(p => p.id === id);
+  if (item) {
+    item.qty++;
+  } else {
+    cart.push({ ...products.find(p => p.id === id), qty: 1 });
+  }
+  updateCart();
+  showToast("Produk berhasil ditambahkan 💗");
+}
+
+function changeQty(id, amount) {
+  const item = cart.find(p => p.id === id);
+  if (!item) return;
+  item.qty += amount;
+  if (item.qty <= 0) {
+    cart = cart.filter(p => p.id !== id);
+  }
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").textContent =
+    cart.reduce((sum, p) => sum + p.qty, 0);
+
+  document.getElementById("cart-items").innerHTML = cart.length
+    ? cart.map(p => `
+      <div class="cart-item">
+        <img src="${imageUrl(p.image)}" alt="${p.name}">
+        <div class="cart-item-info">
+          <h4>${p.name}</h4>
+          <p>${rupiah(p.price)}</p>
+          <div class="qty">
+            <button onclick="changeQty(${p.id},-1)">−</button>
+            <span>${p.qty}</span>
+            <button onclick="changeQty(${p.id},1)">+</button>
+          </div>
+        </div>
+      </div>
+    `).join("")
+    : '<div class="empty">Keranjang masih kosong 🛍️<br>Yuk pilih skincare favoritmu!</div>';
+
+  const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+  document.getElementById("cart-total").textContent = rupiah(total);
+}
+
+function openCart() {
+  document.getElementById("cart-panel").classList.add("show");
+  document.getElementById("overlay").classList.add("show");
+}
+
+function closeCart() {
+  document.getElementById("cart-panel").classList.remove("show");
+  document.getElementById("overlay").classList.remove("show");
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+function checkout() {
+  if (!cart.length) {
+    showToast("Keranjangmu masih kosong 🛍️");
+    return;
+  }
+
+  const lines = cart.map(p =>
+    `${p.name} x${p.qty} = ${rupiah(p.price * p.qty)}`
+  ).join("\n");
+
+  const total = cart.reduce((sum, p) => sum + p.price * p.qty, 0);
+
+  const message =
+    "Halo Glow Beauty! Saya ingin memesan:\n\n" +
+    lines + "\n\nTotal: " + rupiah(total) +
+    "\n\nMohon informasi cara pemesanannya.";
+
+  // Demo: tampilkan ringkasan pesanan yang bisa disalin.
+  // Untuk transaksi nyata, hubungkan ke WhatsApp atau backend toko.
+  closeCart();
+  alert(message);
+}
+
+renderProducts();
+updateCart();
+</script>
+
+</body>
+</html>
